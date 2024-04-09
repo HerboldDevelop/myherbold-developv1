@@ -177,7 +177,7 @@ class RawFileBrowser extends React.Component {
 
   getFile = (key) => {
     let hasPrefix = false
-    const exactFolder = this.props.files.find((f) => {
+    const exactFolder = this.props.files?.find((f) => {
       if (f.key.startsWith(key)) {
         hasPrefix = true
       }
@@ -657,7 +657,7 @@ class RawFileBrowser extends React.Component {
       const terms = this.state.nameFilter.toLowerCase().split(' ')
       files?.map((file) => {
         let skip = false
-        terms.map((term) => {
+        terms?.map((term) => {
           if (file.key.toLowerCase().trim().indexOf(term) === -1) {
             skip = true
           }

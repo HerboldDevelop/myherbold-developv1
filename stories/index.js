@@ -191,9 +191,9 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
           })
 
           const uniqueNewFiles = []
-          newFiles.map((newFile) => {
+          newFiles?.map((newFile) => {
             let exists = false
-            state.files.map((existingFile) => {
+            state.files?.map((existingFile) => {
               if (existingFile.key === newFile.key) {
                 exists = true
               }
@@ -341,9 +341,9 @@ export const withCustomDNDProvider = () => (
             })
 
             const uniqueNewFiles = []
-            newFiles.map((newFile) => {
+            newFiles?.map((newFile) => {
               let exists = false
-              state.files.map((existingFile) => {
+              state.files?.map((existingFile) => {
                 if (existingFile.key === newFile.key) {
                   exists = true
                 }
