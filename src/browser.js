@@ -603,7 +603,7 @@ class RawFileBrowser extends React.Component {
     const browserProps = this.getBrowserProps()
     let renderedFiles = []
 
-    files.map((file) => {
+    files?.map((file) => {
       const thisItemProps = {
         ...browserProps.getItemProps(file, browserProps),
         depth: this.state.nameFilter ? 0 : depth,
@@ -646,7 +646,7 @@ class RawFileBrowser extends React.Component {
   getFiles() {
     let files = this.props.files?.concat([])
     if (this.state.activeAction === 'createFolder') {
-      files.push({
+      files?.push({
         key: this.state.actionTargets[0],
         size: 0,
         draft: true,
@@ -697,7 +697,7 @@ class RawFileBrowser extends React.Component {
         item.children.map(findSelected)
       }
     }
-    files.map(findSelected)
+    files?.map(findSelected)
     return selectedItems
   }
 
