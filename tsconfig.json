@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "target": "esnext",
+        "lib": ["esnext", "dom"],
+        "strict": true,
+        "jsx": "react",
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "baseUrl": "./",
+        "paths": {
+            "@module/*": ["./src/*"]
+          },
+        "typeRoots": ["src/types.ts", "./node_modules/@types"]
+    },
+
+    "include": ["src/**/*"],
+
+    "exclude": [
+        "node_modules",
+        "dist",
+        "src/**/*.stories.tsx",
+        "src/**/*.test.tsx"
+      ]
+}
