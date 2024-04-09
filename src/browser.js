@@ -644,7 +644,7 @@ class RawFileBrowser extends React.Component {
   }
 
   getFiles() {
-    let files = this.props.files.concat([])
+    let files = this.props.files?.concat([])
     if (this.state.activeAction === 'createFolder') {
       files.push({
         key: this.state.actionTargets[0],
