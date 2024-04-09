@@ -15,7 +15,7 @@ const DefaultDetails: React.FC<DetailRendererProps> = ({ file, close }) => {
 
   return (
     <div>
-      <h2>Item Detail</h2>
+      {/* <h2>Item Detail</h2>
       <dl>
         <dt>Key</dt>
         <dd>{file.key}</dd>
@@ -25,7 +25,7 @@ const DefaultDetails: React.FC<DetailRendererProps> = ({ file, close }) => {
       </dl>
       <a href="#" onClick={handleCloseClick}>
         Close
-      </a>
+      </a> */}
     </div>
   )
 }
