@@ -174,7 +174,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
           })
         }}
         onCreateFiles={(files, prefix) => {
-          const newFiles = store.get('files').map((file) => {
+          const newFiles = store.get('files')?.map((file) => {
             let newKey = prefix
             if (
               prefix !== '' &&
@@ -208,7 +208,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
         }}
         onMoveFolder={(oldKey, newKey) => {
           const newFiles = []
-          store.get('files').map((file) => {
+          store.get('files')?.map((file) => {
             if (file.key.substr(0, oldKey.length) === oldKey) {
               newFiles.push({
                 ...file,
@@ -225,7 +225,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
         }}
         onMoveFile={(oldKey, newKey) => {
           const newFiles = []
-          store.get('files').map((file) => {
+          store.get('files')?.map((file) => {
             if (file.key === oldKey) {
               newFiles.push({
                 ...file,
@@ -242,7 +242,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
         }}
         onRenameFolder={(oldKey, newKey) => {
           const newFiles = []
-          store.get('files').map((file) => {
+          store.get('files')?.map((file) => {
             if (file.key.substr(0, oldKey.length) === oldKey) {
               newFiles.push({
                 ...file,
@@ -259,7 +259,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
         }}
         onRenameFile={(oldKey, newKey) => {
           const newFiles = []
-          store.get('files').map((file) => {
+          store.get('files')?.map((file) => {
             if (file.key === oldKey) {
               newFiles.push({
                 ...file,
@@ -276,7 +276,7 @@ export const simpleFlatAndReadOnlyExampleWithBulkActions = () => (
         }}
         onDeleteFolder={(folderKeys) => {
           const newFiles = []
-          store.get('files').map((file) => {
+          store.get('files')?.map((file) => {
             if (
               !folderKeys.find(
                 (folderKey) =>
@@ -324,7 +324,7 @@ export const withCustomDNDProvider = () => (
             })
           }}
           onCreateFiles={(files, prefix) => {
-            const newFiles = dndStore.get('files').map((file) => {
+            const newFiles = dndStore.get('files')?.map((file) => {
               let newKey = prefix
               if (
                 prefix !== '' &&
@@ -358,7 +358,7 @@ export const withCustomDNDProvider = () => (
           }}
           onMoveFolder={(oldKey, newKey) => {
             const newFiles = []
-            dndStore.get('files').map((file) => {
+            dndStore.get('files')?.map((file) => {
               if (file.key.substr(0, oldKey.length) === oldKey) {
                 newFiles.push({
                   ...file,
@@ -375,7 +375,7 @@ export const withCustomDNDProvider = () => (
           }}
           onMoveFile={(oldKey, newKey) => {
             const newFiles = []
-            dndStore.get('files').map((file) => {
+            dndStore.get('files')?.map((file) => {
               if (file.key === oldKey) {
                 newFiles.push({
                   ...file,
@@ -392,7 +392,7 @@ export const withCustomDNDProvider = () => (
           }}
           onRenameFolder={(oldKey, newKey) => {
             const newFiles = []
-            dndStore.get('files').map((file) => {
+            dndStore.get('files')?.map((file) => {
               if (file.key.substr(0, oldKey.length) === oldKey) {
                 newFiles.push({
                   ...file,
@@ -409,7 +409,7 @@ export const withCustomDNDProvider = () => (
           }}
           onRenameFile={(oldKey, newKey) => {
             const newFiles = []
-            dndStore.get('files').map((file) => {
+            dndStore.get('files')?.map((file) => {
               if (file.key === oldKey) {
                 newFiles.push({
                   ...file,
@@ -426,7 +426,7 @@ export const withCustomDNDProvider = () => (
           }}
           onDeleteFolder={(folderKeys) => {
             const newFiles = []
-            dndStore.get('files').map((file) => {
+            dndStore.get('files')?.map((file) => {
               if (
                 !folderKeys.find(
                   (folderKey) =>

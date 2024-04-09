@@ -10,7 +10,7 @@ function groupByFolder(files, root) {
     file.relativeKey = (file.newKey || file.key).substr(root.length)
     let currentFolder = fileTree
     const folders = file.relativeKey.split('/')
-    folders.map((folder, folderIndex) => {
+    folders?.map((folder, folderIndex) => {
       if (folderIndex === folders.length - 1 && isFolder(file)) {
         for (const key in file) {
           currentFolder[key] = file[key]

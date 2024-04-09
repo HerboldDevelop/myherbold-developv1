@@ -694,7 +694,7 @@ class RawFileBrowser extends React.Component {
         selectedItems.push(item)
       }
       if (item.children) {
-        item.children.map(findSelected)
+        item.children?.map(findSelected)
       }
     }
     files?.map(findSelected)
