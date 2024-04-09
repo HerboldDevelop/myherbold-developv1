@@ -36,8 +36,8 @@ class RawTableHeader extends React.Component {
         })}
       >
         <th>Ordner / Folder</th>
-        <th className="size">Größe / Size</th>
-        <th className="modified">Zuletzt bearbeitet / Last Modified</th>
+        {/* <th className="size">Größe / Size</th>
+        <th className="modified">Zuletzt bearbeitet / Last Modified</th> */}
       </tr>
     )
 
