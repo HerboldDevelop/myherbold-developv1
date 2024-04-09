@@ -655,7 +655,7 @@ class RawFileBrowser extends React.Component {
     if (this.state.nameFilter) {
       const filteredFiles = []
       const terms = this.state.nameFilter.toLowerCase().split(' ')
-      files.map((file) => {
+      files?.map((file) => {
         let skip = false
         terms.map((term) => {
           if (file.key.toLowerCase().trim().indexOf(term) === -1) {
@@ -673,7 +673,7 @@ class RawFileBrowser extends React.Component {
       files = this.props.group(files, '')
     } else {
       const newFiles = []
-      files.map((file) => {
+      files?.map((file) => {
         if (!isFolder(file)) {
           newFiles.push(file)
         }
