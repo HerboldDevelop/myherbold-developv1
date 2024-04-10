@@ -9,7 +9,7 @@ const DefaultFilter: React.FC<FilterRendererProps> = ({ value, updateFilter }) =
   return (
     <input
       type="search"
-      placeholder="Filter files"
+      placeholder="Suchen / Search ..."
       value={value}
       onChange={handleFilterChange}
     />
