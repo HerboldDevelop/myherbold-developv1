@@ -35,7 +35,7 @@ class RawTableHeader extends React.Component {
           selected: this.props.isSelected,
         })}
       >
-        <th>Ordner / Folder</th>
+        {/* <th>Ordner / Folder</th> */}
         {/* <th className="size">Größe / Size</th>
         <th className="modified">Zuletzt bearbeitet / Last Modified</th> */}
       </tr>
