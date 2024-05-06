@@ -38,7 +38,19 @@ class RawListThumbnailFile extends BaseFile {
     }
 
     const inAction = (isDragging || action)
-
+    function deUmlaut(value){
+      value = value.toLowerCase();
+      value = value.replace(/ä/g, 'ae');
+      value = value.replace(/ö/g, 'oe');
+      value = value.replace(/ü/g, 'ue');
+      value = value.replace(/ß/g, 'ss');
+      value = value.replace(/ /g, '-');
+      value = value.replace(/\./g, '');
+      value = value.replace(/,/g, '');
+      value = value.replace(/\(/g, '');
+      value = value.replace(/\)/g, '');
+      return value;
+    }
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
 
     let name
@@ -69,7 +81,7 @@ class RawListThumbnailFile extends BaseFile {
       } else {
         name = (
           <a href={url} download="download" onClick={this.handleFileClick}>
-            {this.getName()}
+            {deUmlaut(this.getName())}
           </a>
         )
       }
