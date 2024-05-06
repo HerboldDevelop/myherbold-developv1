@@ -18,16 +18,7 @@ class RawTableFolder extends BaseFolder {
     const inAction = (isDragging || action)
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
-    function fixUmlauts(value) {
-      value = value.replace(/ä/g, '&auml;');
-      value = value.replace(/ö/g, '&ouml;');
-      value = value.replace(/ü/g, '&uuml;');
-      value = value.replace(/ß/g, '&szlig;');
-      value = value.replace(/Ä/g, '&Auml;');
-      value = value.replace(/Ö/g, '&Ouml;');
-      value = value.replace(/Ü/g, '&Uuml;');
-      return value;
-  }
+
     let name
     if (!inAction && isDeleting && browserProps.selection.length === 1) {
       name = (
@@ -57,11 +48,21 @@ class RawTableFolder extends BaseFolder {
         </div>
       )
     } else {
+      function fixUmlauts(value) {
+        value = value.replace(/ä/g, '&auml;');
+        value = value.replace(/ö/g, '&ouml;');
+        value = value.replace(/ü/g, '&uuml;');
+        value = value.replace(/ß/g, '&szlig;');
+        value = value.replace(/Ä/g, '&Auml;');
+        value = value.replace(/Ö/g, '&Ouml;');
+        value = value.replace(/Ü/g, '&Uuml;');
+        return value;
+    }
       name = (
         <div>
           <a onClick={this.toggleFolder}>
             {icon}
-            {deUmlaut(this.getName())}
+            {fixUmlauts(this.getName())}
           </a>
         </div>
       )

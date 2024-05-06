@@ -21,19 +21,7 @@ class RawListThumbnailFolder extends BaseFolder {
     const inAction = (isDragging || action)
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
-    function deUmlaut(value){
-      value = value.toLowerCase();
-      value = value.replace(/ä/g, 'ae');
-      value = value.replace(/ö/g, 'oe');
-      value = value.replace(/ü/g, 'ue');
-      value = value.replace(/ß/g, 'ss');
-      value = value.replace(/ /g, '-');
-      value = value.replace(/\./g, '');
-      value = value.replace(/,/g, '');
-      value = value.replace(/\(/g, '');
-      value = value.replace(/\)/g, '');
-      return value;
-    }
+
     let name
     if (!inAction && isDeleting && browserProps.selection.length === 1) {
       name = (
@@ -61,10 +49,20 @@ class RawListThumbnailFolder extends BaseFolder {
         </div>
       )
     } else {
+      function fixUmlauts(value) {
+        value = value.replace(/ä/g, '&auml;');
+        value = value.replace(/ö/g, '&ouml;');
+        value = value.replace(/ü/g, '&uuml;');
+        value = value.replace(/ß/g, '&szlig;');
+        value = value.replace(/Ä/g, '&Auml;');
+        value = value.replace(/Ö/g, '&Ouml;');
+        value = value.replace(/Ü/g, '&Uuml;');
+        return value;
+    }
       name = (
         <div>
           <a onClick={this.toggleFolder}>
-            {deUmlaut(this.getName())}
+            {fixUmlauts(this.getName())}
           </a>
         </div>
       )
