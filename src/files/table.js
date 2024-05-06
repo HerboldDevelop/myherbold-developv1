@@ -59,20 +59,10 @@ class RawTableFile extends BaseFile {
       )
     }
 
-    function fixUmlauts(value) {
-      value = value.replace(/ä/g, '&auml;');
-      value = value.replace(/ö/g, '&ouml;');
-      value = value.replace(/ü/g, '&uuml;');
-      value = value.replace(/ß/g, '&szlig;');
-      value = value.replace(/Ä/g, '&Auml;');
-      value = value.replace(/Ö/g, '&Ouml;');
-      value = value.replace(/Ü/g, '&Uuml;');
-      return value;
-  }
-
+ 
     let draggable = (
       <div>
-        {fixUmlauts(name)}
+        {name}
       </div>
     )
     if (typeof browserProps.moveFile === 'function') {
