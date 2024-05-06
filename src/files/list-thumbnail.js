@@ -69,11 +69,11 @@ class RawListThumbnailFile extends BaseFile {
       } else {
         function fixUmlauts(value) {
           value = value.replace(/ä/g, '&auml;');
-          value = value.replace(/ö/g, '&ouml;');
+          // value = value.replace(/ö/g, '&ouml;');
           value = value.replace(/ü/g, '&uuml;');
           value = value.replace(/ß/g, '&szlig;');
           value = value.replace(/Ä/g, '&Auml;');
-          value = value.replace(/Ö/g, '&Ouml;');
+          // value = value.replace(/Ö/g, '&Ouml;');
           value = value.replace(/Ü/g, '&Uuml;');
           return value;
       }
