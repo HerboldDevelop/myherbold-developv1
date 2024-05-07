@@ -128,9 +128,10 @@ const DefaultAction = (props: ActionRendererProps) => {
               onClick={isFolder ? onDownloadFolder : onDownloadFile}
               href="#"
               role="button"
+              style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyItems: 'center'}}
             >
-              {icons?.Download}
-              &nbsp;Download
+              <p>{icons?.Download}</p>
+              <p>&nbsp;Download</p>
             </a>
           </li>
         )

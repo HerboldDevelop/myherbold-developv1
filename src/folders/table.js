@@ -93,6 +93,11 @@ class RawTableFolder extends BaseFolder {
             {draggable}
           </div>
         </td>
+        <td className="name">
+          <div>
+            {this.getCompany()}
+          </div>
+        </td>
         <td />
         <td />
       </tr>

@@ -7,6 +7,7 @@ class BaseFolder extends React.Component {
   static propTypes = {
     name: PropTypes.string,
     fileKey: PropTypes.string,
+    company: PropTypes.string,
 
     newName: PropTypes.string,
     keyDerived: PropTypes.bool,
@@ -53,6 +54,12 @@ class BaseFolder extends React.Component {
     }
     const folders = this.props.fileKey.split('/')
     return this.props.newName || folders[folders.length - 2]
+  }
+  getCompany() {
+    if (this.props.company) {
+      return this.props.company
+    }
+    return this.props.company
   }
 
   handleFolderClick = (event) => {
