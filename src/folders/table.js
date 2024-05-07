@@ -70,7 +70,7 @@ class RawTableFolder extends BaseFolder {
 
     let draggable = (
       <div>
-        {name}
+        {name} - {this.getCompany()}
       </div>
     )
     if (typeof browserProps.moveFile === 'function') {
@@ -91,11 +91,6 @@ class RawTableFolder extends BaseFolder {
         <td className="name">
           <div style={{ paddingLeft: (depth * 16) + 'px' }}>
             {draggable}
-          </div>
-        </td>
-        <td className="name">
-          <div>
-            {this.getCompany()}
           </div>
         </td>
         <td />

@@ -46,10 +46,6 @@ class RawFileBrowser extends React.Component {
       company: PropTypes.string
 
     })).isRequired,
-    companys: PropTypes.arrayOf(PropTypes.shape({
-      company: PropTypes.string
-   
-    })),
     actions: PropTypes.node,
     showActionBar: PropTypes.bool.isRequired,
     canFilter: PropTypes.bool.isRequired,
