@@ -28,6 +28,7 @@ function getItemProps(file, browserProps) {
   return {
     key: `file-${file.key}`,
     fileKey: file.key,
+    company: file.company,
     isSelected: (browserProps.selection.includes(file.key)),
     isOpen: file.key in browserProps.openFolders || browserProps.nameFilter,
     isRenaming: browserProps.activeAction === 'rename' && browserProps.actionTargets.includes(file.key),
@@ -42,6 +43,8 @@ class RawFileBrowser extends React.Component {
       key: PropTypes.string.isRequired,
       modified: PropTypes.number,
       size: PropTypes.number,
+      company: PropTypes.string
+
     })).isRequired,
     companys: PropTypes.arrayOf(PropTypes.shape({
       company: PropTypes.string
