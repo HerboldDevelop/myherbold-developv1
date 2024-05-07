@@ -38,6 +38,7 @@ class BaseFolder extends React.Component {
 
   state = {
     newName: this.props.isDraft ? 'New folder' : this.getName(),
+    company: this.getCompany()
   }
 
   selectFolderNameFromRef(element) {
