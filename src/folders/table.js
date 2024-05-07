@@ -18,6 +18,7 @@ class RawTableFolder extends BaseFolder {
     const inAction = (isDragging || action)
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
+    let company = this.getCompany()
 
     let name
     if (!inAction && isDeleting && browserProps.selection.length === 1) {
@@ -70,7 +71,7 @@ class RawTableFolder extends BaseFolder {
 
     let draggable = (
       <div>
-        {name} - {this.getCompany()}
+        {name}
       </div>
     )
     if (typeof browserProps.moveFile === 'function') {
@@ -91,6 +92,11 @@ class RawTableFolder extends BaseFolder {
         <td className="name">
           <div style={{ paddingLeft: (depth * 16) + 'px' }}>
             {draggable}
+          </div>
+        </td>
+        <td className="name">
+          <div style={{ paddingLeft: (depth * 16) + 'px' }}>
+            {this.getCompany()}
           </div>
         </td>
         <td />

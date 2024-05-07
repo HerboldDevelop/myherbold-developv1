@@ -60,7 +60,9 @@ class BaseFolder extends React.Component {
     if (this.props.company) {
       return this.props.company
     }
-    return this.props.company
+    const folders = this.props.company
+
+    return this.props.company || folders
   }
 
   handleFolderClick = (event) => {
