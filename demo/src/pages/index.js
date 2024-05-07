@@ -14,6 +14,7 @@ export default function Home() {
               {
                 key: 'cat.png',
                 size: 1.5 * 1024 * 1024,
+                company: 'test'
               },
               {
                 key: 'kitten.png',

@@ -15,6 +15,7 @@ export default {
 const files = [
   {
     key: 'animals/',
+    company: 'testcompany',
     modified: addHours(new Date(), 1).getTime(),
     size: 0,
   },
