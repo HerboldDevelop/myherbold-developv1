@@ -114,7 +114,7 @@ class RawFileBrowser extends React.Component {
   static defaultProps = {
     showActionBar: true,
     canFilter: true,
-    showFoldersOnFilter: false,
+    showFoldersOnFilter: true,
     noFilesMessage: 'No files.',
 
     group: groupByFolder,
@@ -661,7 +661,7 @@ class RawFileBrowser extends React.Component {
       files?.map((file) => {
         let skip = false
         terms?.map((term) => {
-          if (file.key.toLowerCase().trim().indexOf(term) === -1) {
+          if (file.key.toLowerCase().trim().indexOf(term) === -1 && file.company.toLowerCase().trim().indexOf(term) === -1) {
             skip = true
           }
         })
