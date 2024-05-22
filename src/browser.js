@@ -867,6 +867,6 @@ class FileBrowser extends Component {
   }
 }
 
-export default FileBrowser
+export default RawFileBrowser
 
 export { RawFileBrowser }

@@ -113,5 +113,5 @@ const TableFolder = flow(
   DropTarget(['file', 'folder', NativeTypes.FILE], BaseFileConnectors.targetSource, BaseFileConnectors.targetCollect)
 )(RawTableFolder)
 
-export default TableFolder
+export default RawTableFolder
 export { RawTableFolder }

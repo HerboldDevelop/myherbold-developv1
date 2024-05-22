@@ -59,5 +59,5 @@ const TableHeader = DropTarget(
   BaseFileConnectors.targetCollect
 )(RawTableHeader)
 
-export default TableHeader
+export default RawTableHeader
 export { RawTableHeader }
