@@ -84,6 +84,8 @@ export type FontAwesomeVersion = 4 | 5
 
 export type IconsProp = {
   File: JSX.Element
+  SHOP: JSX.Element
+
   Image: JSX.Element
   Video: JSX.Element
   Audio: JSX.Element

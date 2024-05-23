@@ -16,6 +16,8 @@ class RawTableFile extends BaseFile {
     } = this.props
 
     const icon = browserProps.icons[this.getFileType()] || browserProps.icons.File
+    const iconShop = browserProps.icons[this.getFileType()] || browserProps.icons.SHOP
+
     const inAction = (isDragging || action)
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
@@ -57,15 +59,24 @@ class RawTableFile extends BaseFile {
         value = value.replace(/Ü/g, '&Uuml;');
         return value;
     }
-      name = (
-        <a
+      name = (  
+        <div>           
+        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ? <a
           href={url || '#'}
           download="download"
           onClick={this.handleFileClick}
         >
           {icon}
           {fixUmlauts(this.getName())}
-        </a>
+        </a> : <a
+          href={url || '#'}
+          download="download"
+          onClick={this.handleShopClick}
+        >
+          {iconShop}
+          Spare Part Catalog / Ersatzteilkatalog
+        </a>}
+        </div>
       )
     }
 

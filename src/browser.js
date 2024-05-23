@@ -59,6 +59,8 @@ class RawFileBrowser extends React.Component {
       Folder: PropTypes.element,
       FolderOpen: PropTypes.element,
       File: PropTypes.element,
+      SHOP: PropTypes.element,
+
       PDF: PropTypes.element,
       Image: PropTypes.element,
       Delete: PropTypes.element,
@@ -99,6 +101,7 @@ class RawFileBrowser extends React.Component {
     onDeleteFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
     onDownloadFile: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
     onDownloadFolder: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+    onShopOpen: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 
     onSelect: PropTypes.func,
     onSelectFile: PropTypes.func,
@@ -542,7 +545,7 @@ class RawFileBrowser extends React.Component {
       actionRenderer: ActionRenderer,
       onCreateFolder, onRenameFile, onRenameFolder,
       onDeleteFile, onDeleteFolder, onDownloadFile,
-      onDownloadFolder,
+      onDownloadFolder, onShopOpen
     } = this.props
     const browserProps = this.getBrowserProps()
     const selectionIsFolder = (selectedItems.length === 1 && isFolder(selectedItems[0]))
@@ -587,6 +590,9 @@ class RawFileBrowser extends React.Component {
 
         canDownloadFolder={typeof onDownloadFolder === 'function'}
         onDownloadFolder={this.handleActionBarDownloadClick}
+
+        canShopOpen={typeof onShopOpen === 'function'}
+        onShopOpen={this.handleActionBarDownloadClick}
       />
     )
 

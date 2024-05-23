@@ -44,6 +44,11 @@ const files = [
       "relativeKey": "K143382/13-08-10/KA-035563/Absaugung MFT 55_500/ET MFT 55_500 - KA-035563.xls"
   },
   {
+    "key": "K143382/13-08-10/KA-035563/Absaugung MFT 55_500/ET MFT 55_500 - KA-035563.xlsx",
+    "company": "Natural ",
+    "relativeKey": "K143382/13-08-10/KA-035563/Absaugung MFT 55_500/ET MFT 55_500 - KA-035563.xlsx"
+},
+  {
       "key": "K143382/13-08-10/Schneidmühle SML 60_100-H5-2/BA SML 60_100 - 130810_14480_EN.pdf",
       "company": "Natural ",
       "relativeKey": "K143382/13-08-10/Schneidmühle SML 60_100-H5-2/BA SML 60_100 - 130810_14480_EN.pdf"

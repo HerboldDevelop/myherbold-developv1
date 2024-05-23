@@ -8,6 +8,7 @@ const FontAwesome = (majorVersion: FontAwesomeVersion = 4): IconsProp => {
       isFontAwesomeEnabled(4)
       return {
         File: <i className="fa fa-file-o" aria-hidden="true" />,
+        SHOP: <i className="fa fa-file-o" aria-hidden="true" />,
         Image: <i className="fa fa-file-image-o" aria-hidden="true" />,
         Video: <i className="fa fa-file-video-o" aria-hidden="true" />,
         Audio: <i className="fa fa-file-audio-o" aria-hidden="true" />,
@@ -32,6 +33,7 @@ const FontAwesome = (majorVersion: FontAwesomeVersion = 4): IconsProp => {
       isFontAwesomeEnabled(5)
       return {
         File: <i className="far fa-file" aria-hidden="true" />,
+        SHOP: <i className="fa fa-file-o" aria-hidden="true" />,
         Image: <i className="far fa-file-image" aria-hidden="true" />,
         Video: <i className="far fa-file-video" aria-hidden="true" />,
         Audio: <i className="far fa-file-audio" aria-hidden="true" />,
