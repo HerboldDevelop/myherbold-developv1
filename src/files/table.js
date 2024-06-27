@@ -91,7 +91,7 @@ class RawTableFile extends BaseFile {
     }
 
     const row = (
-      <tr
+      <><tr
         className={ClassNames('file', {
           pending: action,
           dragging: isDragging,
@@ -106,11 +106,20 @@ class RawTableFile extends BaseFile {
             {draggable}
           </div>
         </td>
-        {/* <td className="size">{fileSize(size)}</td>
-        <td className="modified">
-          {typeof modified === 'undefined' ? '-' : formatDistanceToNow(modified, { addSuffix: true })}
-        </td> */}
-      </tr>
+        {/* <td className="size">{fileSize(size)}</td> */}
+      
+      </tr><tr
+      
+      >
+        <td className="name">
+        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ?  <button  onClick={this.handleShopClick}
+ style={{ padding: "5px", marginTop: "2px", cursor: 'pointer', backgroundColor: '#1A4B7E', borderRadius: "3px", color: 'white' }}>
+           Dokument per E-Mail senden | Send document via email
+          </button> : null }
+        </td>
+        {/* <td className="size">{fileSize(size)}</td> */}
+      
+      </tr></>
     )
 
     return this.connectDND(row)
