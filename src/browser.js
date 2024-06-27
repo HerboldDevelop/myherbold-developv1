@@ -147,7 +147,7 @@ class RawFileBrowser extends React.Component {
     onSelect: (fileOrFolder) => { }, // Always called when a file or folder is selected
     onSelectFile: (file) => { }, //    Called after onSelect, only on file selection
     onSelectFolder: (folder) => { }, //    Called after onSelect, only on folder selection
-
+    onMailClick: (file) => {},
     onPreviewOpen: (file) => { }, // File opened
     onPreviewClose: (file) => { }, // File closed
 

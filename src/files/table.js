@@ -112,7 +112,7 @@ class RawTableFile extends BaseFile {
       
       >
         <td className="name">
-        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ?  <button  onClick={this.handleShopClick}
+        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ?  <button  onClick={this.handleMailClick}
  style={{ padding: "5px", marginTop: "2px", cursor: 'pointer', backgroundColor: '#1A4B7E', borderRadius: "3px", color: 'white' }}>
            Dokument per E-Mail senden | Send document via email
           </button> : null }

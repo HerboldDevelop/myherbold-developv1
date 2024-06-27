@@ -80,6 +80,15 @@ class BaseFile extends React.Component {
       extension: this.getExtension(),
     })
   }
+  handleMailClick = (event) => {
+    event && event.preventDefault()
+    this.props.browserProps.preview({
+      url: this.props.url,
+      name: this.getName(),
+      key: this.props.fileKey,
+      extension: this.getExtension(),
+    })
+  }
   handleItemClick = (event) => {
     event.stopPropagation()
     this.props.browserProps.select(this.props.fileKey, 'file', event.ctrlKey || event.metaKey, event.shiftKey)
