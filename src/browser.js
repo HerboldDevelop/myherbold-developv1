@@ -22,7 +22,6 @@ import { isFolder } from './utils'
 import { DefaultAction } from './actions'
 import createTacoTranslateClient from 'tacotranslate'
 import { TacoTranslate } from 'tacotranslate/react'
-import { T } from "@tolgee/react"
 
 const tacoTranslateClient = createTacoTranslateClient({ apiKey: 'h85XDZfaYi8IyfJd4uRkkV9Qbedj' })
 

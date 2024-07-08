@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ClassNames from 'classnames'
 import { DragSource, DropTarget } from 'react-dnd'
 import { NativeTypes } from 'react-dnd-html5-backend'
@@ -6,12 +6,43 @@ import { formatDistanceToNow } from 'date-fns'
 import flow from 'lodash/flow'
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
 import { fileSize, getDeepl } from './utils.js'
-import { Translate } from 'tacotranslate/react'
-import { T } from "@tolgee/react"
+
 
 
 class RawTableFile extends BaseFile {
+  _renderCounter = () => () => {
+
+
+
+    const [translate, setTranslate] = useState('')
+    async function getDeepl() {
+         const options = {
+           method: 'POST',
+           headers: {
+             "Content-Type": 'application/json',
+             "Accept": '*/*',
+             'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+           },
+           body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn:  ["en"]})
+         };
+         
+        const valtrans = await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+           .then(response => response.json())
+           .then(response => {
+              setTranslate(response.translations.en.text)
+            })
+           .catch(err => console.error(err));
+       
+        }
+        getDeepl()
+      return translate
+      }
+       
+     
+  
   render() {
+    const translations = this._renderCounter()
+
     const {
       isDragging, isDeleting, isRenaming, isOver, isSelected,
       action, url, browserProps, connectDragPreview,
@@ -63,6 +94,8 @@ class RawTableFile extends BaseFile {
         return value;
     }
 
+
+
       name = (  
         <div>           
         {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ? <a
@@ -71,7 +104,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {<T keyName="translation_key_test" />}
+          {translations}
         </a> : <a
           href={url || '#'}
           download="download"
