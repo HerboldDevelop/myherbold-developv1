@@ -10,7 +10,9 @@ import { fileSize, getDeepl } from './utils.js'
 
 
 class RawTableFile extends BaseFile {
-  constructor() {
+  constructor(props) {
+    super(props); // Call the super constructor first
+
     this.state = {
       // Your initial state
       loading: true,
@@ -18,34 +20,35 @@ class RawTableFile extends BaseFile {
     }
   }
    
-      componentDidMount() {
-        async function getDeepl() {
-          const options = {
-            method: 'POST',
-            headers: {
-              "Content-Type": 'application/json',
-              "Accept": '*/*',
-              'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
-            },
-            body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn:  ["en"]})
-          };
-          
-         await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
-            .then(response => response.json())
-            .then(response => {
-
-              const value = []
-
-              value.push({text: response.translations.en.text})
-
-               this.setState({value: value, loading: false})
-             })
-            .catch(err => console.error(err));
-        
-         }
-         getDeepl()
-      }
-       
+  componentDidMount() {
+    const getDeepl = async () => { // Make it an arrow function
+      const options = {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": '*/*',
+          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+        },
+        body: JSON.stringify({
+          key: this.getName(), // 'this' now refers to your component
+          namespace: "dashboard",
+          translations: { de: this.getName().toLowerCase() },
+          auto: true,
+          languagesToReturn: ["en"]
+        })
+      };
+  
+      await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+        .then(response => response.json())
+        .then(response => {
+          const value = [{ text: response.translations.en.text }]; // Simplify array creation
+  
+          this.setState({ value, loading: false }); // Concise update
+        })
+        .catch(err => console.error(err));
+    };
+    getDeepl(); 
+  }
      
   
   render() {
