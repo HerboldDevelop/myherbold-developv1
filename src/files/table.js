@@ -29,13 +29,8 @@ class RawTableFile extends BaseFile {
           "Accept": '*/*',
           'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
         },
-        body: JSON.stringify({
-          key: this.getName(), // 'this' now refers to your component
-          namespace: "dashboard",
-          translations: { de: this.getName().toLowerCase() },
-          auto: true,
-          languagesToReturn: ["en"]
-        })
+        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en"]})
+
       };
   
       await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
@@ -114,7 +109,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {this.state.loading ? this.state?.value[0]?.text : this.getName()}
+          {this.state.loading ? this.getName() : this.state?.value[0]?.text}
         </a> : <a
           href={url || '#'}
           download="download"
