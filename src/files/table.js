@@ -7,6 +7,7 @@ import flow from 'lodash/flow'
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
 import { fileSize, getDeepl } from './utils.js'
 import { Translate } from 'tacotranslate/react'
+import { T } from "@tolgee/react"
 
 
 class RawTableFile extends BaseFile {
@@ -70,7 +71,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {<Translate string={this.getName()} />}
+          {<T keyName="translation_key_test" />}
         </a> : <a
           href={url || '#'}
           download="download"
@@ -111,7 +112,8 @@ class RawTableFile extends BaseFile {
         </td>
         {/* <td className="size">{fileSize(size)}</td> */}
       
-      </tr><tr
+      </tr>
+      {/* <tr
       className={ClassNames('mail', {
         pending: action,
         dragging: isDragging,
@@ -125,10 +127,9 @@ class RawTableFile extends BaseFile {
  style={{ padding: "5px", marginTop: "2px", cursor: 'pointer', backgroundColor: '#1A4B7E', borderRadius: "3px", color: 'white' }}>
            Dokument per E-Mail senden | Send document via email
           </button> : null }
-        </td>
-        {/* <td className="size">{fileSize(size)}</td> */}
-      
-      </tr></>
+        </td>      
+      </tr> */}
+      </>
     )
 
     return this.connectDND(row)

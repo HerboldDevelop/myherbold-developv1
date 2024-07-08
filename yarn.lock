@@ -3063,6 +3063,25 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@tolgee/core@5.28.5":
+  version "5.28.5"
+  resolved "https://registry.npmjs.org/@tolgee/core/-/core-5.28.5.tgz"
+  integrity sha512-zG2J5VngxSLUGoIqsIFbMpkjFoiWbtYcIzyhRuMNA3DPx3N7ISWaiI8ANxjhHw9clWkOai6QB20lj3ylEgSlSQ==
+
+"@tolgee/react@^5.28.5":
+  version "5.28.5"
+  resolved "https://registry.npmjs.org/@tolgee/react/-/react-5.28.5.tgz"
+  integrity sha512-niASSb2pwTxNFtpVmAj/BxKMMZLNEJqjMxBjjj/FOpDtoqDXQAOb3BR4C+n/x/C3Z1DfNAVTG+VSQo1YlGRMqw==
+  dependencies:
+    "@tolgee/web" "5.28.5"
+
+"@tolgee/web@5.28.5":
+  version "5.28.5"
+  resolved "https://registry.npmjs.org/@tolgee/web/-/web-5.28.5.tgz"
+  integrity sha512-rlP0ObMCk/+9/2Sd47sZJExH6JCHq4yvj5N1O4DU7VK9b5OjxXksQXuEsXLn4u0WeHtjh8YswbyWTNR1GqDobw==
+  dependencies:
+    "@tolgee/core" "5.28.5"
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz"
@@ -13460,7 +13479,7 @@ react-textarea-autosize@^7.1.0:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
 
-react@*, "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.6.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^17.0.2, "react@>= 0.14.0", "react@>= 16.14", "react@>= 16.3.0", "react@>= 16.8.0", react@>=0.14.0, react@>=16.3.0, react@>=18.x, "react@0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@15.x || 16.x || 16.4.0-alpha.0911da3", react@17.0.2:
+react@*, "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.14.0 || ^17.0.1 || ^18.1.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.6.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^17.0.2, "react@>= 0.14.0", "react@>= 16.14", "react@>= 16.3.0", "react@>= 16.8.0", react@>=0.14.0, react@>=16.3.0, react@>=18.x, "react@0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@15.x || 16.x || 16.4.0-alpha.0911da3", react@17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
