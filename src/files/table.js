@@ -104,7 +104,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {<Translations />}
+          {<Translations {...this.props}/>}
         </a> : <a
           href={url || '#'}
           download="download"
