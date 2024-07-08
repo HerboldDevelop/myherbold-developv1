@@ -6,6 +6,7 @@ import flow from 'lodash/flow'
 
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
+import { Translate} from 'tacotranslate/react';
 
 class RawTableFolder extends BaseFolder {
   render() {
@@ -63,7 +64,7 @@ class RawTableFolder extends BaseFolder {
         <div>
           <a onClick={this.toggleFolder}>
             {icon}
-            {fixUmlauts(this.getName())}
+            {<Translate string={fixUmlauts(this.getName())} />}
           </a>
         </div>
       )

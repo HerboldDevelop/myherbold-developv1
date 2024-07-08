@@ -5,7 +5,8 @@ import { NativeTypes } from 'react-dnd-html5-backend'
 import { formatDistanceToNow } from 'date-fns'
 import flow from 'lodash/flow'
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
-import { fileSize } from './utils.js'
+import { fileSize, getDeepl } from './utils.js'
+
 
 class RawTableFile extends BaseFile {
   render() {
@@ -59,6 +60,7 @@ class RawTableFile extends BaseFile {
         value = value.replace(/Ü/g, '&Uuml;');
         return value;
     }
+
       name = (  
         <div>           
         {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ? <a
@@ -109,10 +111,16 @@ class RawTableFile extends BaseFile {
         {/* <td className="size">{fileSize(size)}</td> */}
       
       </tr><tr
-      
+      className={ClassNames('mail', {
+        pending: action,
+        dragging: isDragging,
+        dragover: isOver,
+        selected: isSelected,
+      })}
+      onClick={this.handleMailClick}
       >
         <td className="name">
-        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ?  <button  onClick={this.handleMailClick}
+        {!this.getName().includes('.xls') && !this.getName().includes('.xlsx') ?  <button 
  style={{ padding: "5px", marginTop: "2px", cursor: 'pointer', backgroundColor: '#1A4B7E', borderRadius: "3px", color: 'white' }}>
            Dokument per E-Mail senden | Send document via email
           </button> : null }

@@ -1,12 +1,15 @@
 const path = require("path")
 
 module.exports = {
+
   stories: ['../stories/index.js'],
+
   typescript: {
     check: false,
     checkOptions: {},
     reactDocgen: 'none',
   },
+
   webpackFinal: (config) => {
     config.resolve.alias['@module/constants'] = path.resolve(__dirname, '../src/constants')
     config.resolve.alias['@module/sorters'] = path.resolve(__dirname, '../src/sorters')
@@ -21,5 +24,7 @@ module.exports = {
     })
     config.resolve.extensions.push('.sass')
     return config
-  }
+  },
+
+  docs: {}
 }

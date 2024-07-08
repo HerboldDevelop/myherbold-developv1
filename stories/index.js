@@ -3,7 +3,6 @@ import { addHours, subHours, subDays, subMonths } from 'date-fns'
 import { State, Store } from '@sambego/storybook-state'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
-
 import FileBrowser, { FileRenderers, FolderRenderers, Groupers, Icons, RawFileBrowser } from '../src'
 import './stories'
 

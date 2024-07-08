@@ -38,6 +38,16 @@ const BaseFile: React.FC<Props> = ({ url, newKey, fileKey, browserProps, isDragg
       extension: getExtension(),
     })
   }
+  function handleMailClick(event): void {
+    event && event.preventDefault()
+    browserProps.preview({
+      url,
+      name: getName(),
+      key: fileKey,
+      extension: getExtension(),
+    })
+  }
+
 
   function handleItemClick(event): void {
     event.stopPropagation()

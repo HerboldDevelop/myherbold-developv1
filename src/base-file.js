@@ -51,6 +51,16 @@ class BaseFile extends React.Component {
     if (slashIndex !== -1) {
       name = name.substr(slashIndex + 1)
     }
+
+
+    return name
+  }
+  getNameTranslate() {
+    let name = this.props.newKey || this.props.fileKey
+    const slashIndex = name.lastIndexOf('/')
+    if (slashIndex !== -1) {
+      name = name.substr(slashIndex + 1)
+    }
     return name
   }
   getExtension() {
@@ -81,13 +91,8 @@ class BaseFile extends React.Component {
     })
   }
   handleMailClick = (event) => {
-    event && event.preventDefault()
-    this.props.browserProps.preview({
-      url: this.props.url,
-      name: this.getName(),
-      key: this.props.fileKey,
-      extension: this.getExtension(),
-    })
+    event.stopPropagation()
+    this.props.browserProps.select(this.props.fileKey, 'mail', event.ctrlKey || event.metaKey, event.shiftKey)
   }
   handleItemClick = (event) => {
     event.stopPropagation()
@@ -241,4 +246,5 @@ const BaseFileConnectors = {
 export default BaseFile
 export {
   BaseFileConnectors,
+  BaseFile
 }

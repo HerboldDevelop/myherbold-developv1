@@ -342,6 +342,8 @@ export interface FileBrowserProps {
 
   onSelect?: (fileOrFolder: FileBrowserFile | FileBrowserFolder) => void
   onSelectFile?: (file: FileBrowserFile) => void
+  onMailClick?: (file: FileBrowserFile) => void
+
   onSelectFolder?: (folder: FileBrowserFolder) => void
 
   onPreviewOpen?: (file: FileBrowserFile) => void

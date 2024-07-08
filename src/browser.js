@@ -20,6 +20,9 @@ import { sortByName } from './sorters'
 
 import { isFolder } from './utils'
 import { DefaultAction } from './actions'
+import createTacoTranslateClient from 'tacotranslate'
+import { TacoTranslate } from 'tacotranslate/react'
+const tacoTranslateClient = createTacoTranslateClient({ apiKey: 'h85XDZfaYi8IyfJd4uRkkV9Qbedj' })
 
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm
@@ -106,7 +109,7 @@ class RawFileBrowser extends React.Component {
     onSelect: PropTypes.func,
     onSelectFile: PropTypes.func,
     onSelectFolder: PropTypes.func,
-
+    onMailClick: PropTypes.func,
     onPreviewOpen: PropTypes.func,
     onPreviewClose: PropTypes.func,
 
@@ -147,7 +150,7 @@ class RawFileBrowser extends React.Component {
     onSelect: (fileOrFolder) => { }, // Always called when a file or folder is selected
     onSelectFile: (file) => { }, //    Called after onSelect, only on file selection
     onSelectFolder: (folder) => { }, //    Called after onSelect, only on folder selection
-    onMailClick: (file) => {},
+    onMailClick: (file) => { },
     onPreviewOpen: (file) => { }, // File opened
     onPreviewClose: (file) => { }, // File closed
 
@@ -318,7 +321,14 @@ class RawFileBrowser extends React.Component {
       this.props.onDownloadFile(keys)
     })
   }
-
+  mailSend = (keys) => {
+    this.setState({
+      activeAction: null,
+      actionTargets: [],
+    }, () => {
+      this.props.onMailClick(keys)
+    })
+  }
   downloadFolder = (keys) => {
     this.setState({
       activeAction: null,
@@ -369,6 +379,8 @@ class RawFileBrowser extends React.Component {
 
       if (selectedType === 'file') this.props.onSelectFile(selected)
       if (selectedType === 'folder') this.props.onSelectFolder(selected)
+        if (selectedType === 'mail') this.props.onMailClick(selected)
+
     })
   }
 
@@ -545,7 +557,7 @@ class RawFileBrowser extends React.Component {
       actionRenderer: ActionRenderer,
       onCreateFolder, onRenameFile, onRenameFolder,
       onDeleteFile, onDeleteFolder, onDownloadFile,
-      onDownloadFolder, onShopOpen
+      onDownloadFolder, onShopOpen, onMailClick
     } = this.props
     const browserProps = this.getBrowserProps()
     const selectionIsFolder = (selectedItems.length === 1 && isFolder(selectedItems[0]))
@@ -864,10 +876,14 @@ class RawFileBrowser extends React.Component {
 }
 
 class FileBrowser extends Component {
+  
   render() {
+    
     return (
       <DndProvider backend={HTML5Backend}>
+    <TacoTranslate client={tacoTranslateClient} locale="en">
         <RawFileBrowser {...this.props} />
+        </TacoTranslate>
        </DndProvider>
     )
   }

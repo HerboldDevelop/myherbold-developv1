@@ -7,6 +7,28 @@ function floatPrecision(floatValue, precision) {
   }
 }
 
+async function getDeepl(name) {
+  
+ 
+ 
+   const result = await fetch('http://localhost:3000/api/hello', {
+   method: 'POST',
+   mode: 'no-cors',
+   headers: {
+     'Content-Type': 'application/json',
+   },
+   body: JSON.stringify({value: name})
+ }).then(response => {return response.translate})
+   .catch(error => {
+     console.error(error);
+     return 'Could not translate';
+   });
+
+
+
+  }
+ 
+
 function fileSize(size) {
   if (size > 1024) {
     const kbSize = size / 1024
@@ -19,4 +41,4 @@ function fileSize(size) {
   return `${size} B`
 }
 
-export { floatPrecision, fileSize }
+export { floatPrecision, fileSize, getDeepl }

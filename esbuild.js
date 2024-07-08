@@ -12,6 +12,8 @@ build({
   target: ['es2015'],
   loader: {
     '.js': 'jsx',
+    '.ts': 'tsx',
+
   },
   plugins: [nodeExternalsPlugin()],
 }).catch(() => process.exit(1))
