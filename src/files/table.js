@@ -10,38 +10,45 @@ import { fileSize, getDeepl } from './utils.js'
 
 
 class RawTableFile extends BaseFile {
-  _renderCounter = () => () => {
+  constructor() {
+    this.state = {
+      // Your initial state
+      loading: true,
+      value: []
+    }
+  }
+   
+      componentDidMount() {
+        async function getDeepl() {
+          const options = {
+            method: 'POST',
+            headers: {
+              "Content-Type": 'application/json',
+              "Accept": '*/*',
+              'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+            },
+            body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn:  ["en"]})
+          };
+          
+         await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+            .then(response => response.json())
+            .then(response => {
 
+              const value = []
 
+              value.push({text: response.translations.en.text})
 
-    const [translate, setTranslate] = useState('')
-    async function getDeepl() {
-         const options = {
-           method: 'POST',
-           headers: {
-             "Content-Type": 'application/json',
-             "Accept": '*/*',
-             'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
-           },
-           body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn:  ["en"]})
-         };
-         
-        const valtrans = await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
-           .then(response => response.json())
-           .then(response => {
-              setTranslate(response.translations.en.text)
-            })
-           .catch(err => console.error(err));
-       
-        }
-        getDeepl()
-      return <div>{translate}</div>
+               this.setState({value: value, loading: false})
+             })
+            .catch(err => console.error(err));
+        
+         }
+         getDeepl()
       }
        
      
   
   render() {
-    const Translations = this._renderCounter()
 
     const {
       isDragging, isDeleting, isRenaming, isOver, isSelected,
@@ -104,7 +111,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {<Translations {...this.props}/>}
+          {this.state.loading ? this.state?.value[0]?.text : this.getName()}
         </a> : <a
           href={url || '#'}
           download="download"
