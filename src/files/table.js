@@ -109,7 +109,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {this.state.loading ? this.getName() : this.state?.value[0]?.text}
+          {this.state?.value[0]?.text.toUpperCase()}
         </a> : <a
           href={url || '#'}
           download="download"
