@@ -6,6 +6,7 @@ import { formatDistanceToNow } from 'date-fns'
 import flow from 'lodash/flow'
 import BaseFile, { BaseFileConnectors } from './../base-file.js'
 import { fileSize, getDeepl } from './utils.js'
+import { Translate } from 'tacotranslate/react'
 
 
 class RawTableFile extends BaseFile {
@@ -69,7 +70,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {fixUmlauts(this.getName())}
+          {<Translate string={this.getName()} />}
         </a> : <a
           href={url || '#'}
           download="download"
