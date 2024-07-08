@@ -6,6 +6,7 @@ import flow from 'lodash/flow'
 
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
+import { Translate } from 'tacotranslate/react'
 
 import { isFolder } from '../utils'
 
@@ -62,7 +63,7 @@ class RawListThumbnailFolder extends BaseFolder {
       name = (
         <div>
           <a onClick={this.toggleFolder}>
-            {fixUmlauts(this.getName())}
+            {<Translate string={this.getName()} />}
           </a>
         </div>
       )
