@@ -64,7 +64,7 @@ class RawTableFolder extends BaseFolder {
         <div>
           <a onClick={this.toggleFolder}>
             {icon}
-            {<Translate string={fixUmlauts(this.getName())} />}
+            {<Translate string={this.getName()} />}
           </a>
         </div>
       )
