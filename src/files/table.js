@@ -35,13 +35,13 @@ class RawTableFile extends BaseFile {
        
         }
         getDeepl()
-      return translate
+      return <div>{translate}</div>
       }
        
      
   
   render() {
-    const translations = this._renderCounter()
+    const Translations = this._renderCounter()
 
     const {
       isDragging, isDeleting, isRenaming, isOver, isSelected,
@@ -104,7 +104,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {translations}
+          {<Translations />}
         </a> : <a
           href={url || '#'}
           download="download"
