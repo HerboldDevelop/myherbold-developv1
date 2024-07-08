@@ -14,7 +14,7 @@
     "publish-demo": "git branch -D gh-pages; git push origin --delete gh-pages; git checkout -b gh-pages; cd demo-site; yarn; npm run build; cd ..; git add .; git add -f demo-site/dist; git add -f demo-site/node_modules/uptick-demo-site/dist; git commit -m \"Demo site build\"; git push origin gh-pages; git checkout master; git push origin `git subtree split --prefix demo-site gh-pages`:gh-pages --force;",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-js": "rm -rf dist && node ./esbuild.js",
-    "build-css": "./node_modules/.bin/node-sass src/browser.sass dist/myherbold-browser.css",
+    "build-css": "node-sass src/browser.sass dist/myherbold-browser.css",
     "build": "npm run build-js && npm run build-css",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001",
@@ -25,7 +25,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uptick/react-keyed-file-browser.git"
+    "url": "git+https://github.com/herbolddevelop/myherbold-browser.git"
   },
   "keywords": [
     "react",
@@ -38,9 +38,9 @@
   "author": "Uptick Pty Ltd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/uptick/react-keyed-file-browser/issues"
+    "url": "https://github.com/herbolddevelop/myherbold-browser/issues"
   },
-  "homepage": "https://github.com/uptick/react-keyed-file-browser#readme",
+  "homepage": "https://github.com/herbolddevelop/myherbold-browser#readme",
   "dependencies": {
     "@storybook/builder-webpack5": "^8.1.11",
     "@storybook/manager-webpack5": "^6.5.16",
