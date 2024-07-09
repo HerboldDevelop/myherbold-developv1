@@ -7,6 +7,7 @@ import flow from 'lodash/flow'
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
 import { Translate } from 'tacotranslate/react'
+import { T } from '@tolgee/react'
 
 class RawTableFolder extends BaseFolder {
 
@@ -101,7 +102,7 @@ class RawTableFolder extends BaseFolder {
         <div>
           <a onClick={this.toggleFolder}>
             {icon}
-            {this.state?.value[0]?.text.toUpperCase()}
+            {<T keyName={this.getName()} key={this.getName()} />}
             </a>
         </div>
       )
