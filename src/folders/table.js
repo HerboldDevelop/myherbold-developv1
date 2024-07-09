@@ -29,14 +29,14 @@ class RawTableFolder extends BaseFolder {
           "Accept": '*/*',
           'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
         },
-        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: [this.props.locale]})
+        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ['de', 'en']})
 
       };
   try {
     await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
         .then(response => response.json())
         .then(response => {
-          const value = [{ text: response.translations.en.text }] // Simplify array creation
+          const value = [{ text: this.props.locale === 'de' ? response.translations.de.text : response.translations.en.text }] // Simplify array creation
   
           this.setState({ value }) // Concise update
         })
