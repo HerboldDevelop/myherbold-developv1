@@ -33,6 +33,7 @@ function getItemProps(file, browserProps) {
     key: `file-${file.key}`,
     fileKey: file.key,
     company: file.company,
+    locale: file.locale,
     isSelected: (browserProps.selection.includes(file.key)),
     isOpen: file.key in browserProps.openFolders || browserProps.nameFilter,
     isRenaming: browserProps.activeAction === 'rename' && browserProps.actionTargets.includes(file.key),
@@ -47,7 +48,9 @@ class RawFileBrowser extends React.Component {
       key: PropTypes.string.isRequired,
       modified: PropTypes.number,
       size: PropTypes.number,
-      company: PropTypes.string
+      company: PropTypes.string,
+      locale: PropTypes.string,
+
 
     })).isRequired,
     actions: PropTypes.node,
@@ -55,7 +58,6 @@ class RawFileBrowser extends React.Component {
     canFilter: PropTypes.bool.isRequired,
     showFoldersOnFilter: PropTypes.bool,
     noFilesMessage: PropTypes.string,
-    locale: PropTypes.string,
     group: PropTypes.func.isRequired,
     sort: PropTypes.func.isRequired,
 
@@ -123,7 +125,6 @@ class RawFileBrowser extends React.Component {
     canFilter: true,
     showFoldersOnFilter: true,
     noFilesMessage: 'No files.',
-
     group: groupByFolder,
     sort: sortByName,
 

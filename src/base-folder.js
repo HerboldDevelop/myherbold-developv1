@@ -61,6 +61,9 @@ class BaseFolder extends React.Component {
     if (this.props.locale) {
       return this.props.locale
     }
+    const localeval = this.props.locale
+
+    return this.props.locale || localeval
   }
 
   getCompany() {
