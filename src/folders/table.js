@@ -102,7 +102,7 @@ class RawTableFolder extends BaseFolder {
         <div>
           <a onClick={this.toggleFolder}>
             {icon}
-            {<T keyName={this.getName()} key={this.getName()} />}
+            {<T keyName={this.getName()} language='en' key={this.getName()} />}
             </a>
         </div>
       )
