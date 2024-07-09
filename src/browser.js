@@ -55,7 +55,7 @@ class RawFileBrowser extends React.Component {
     canFilter: PropTypes.bool.isRequired,
     showFoldersOnFilter: PropTypes.bool,
     noFilesMessage: PropTypes.string,
-
+    locale: PropTypes.string,
     group: PropTypes.func.isRequired,
     sort: PropTypes.func.isRequired,
 
@@ -521,6 +521,7 @@ class RawFileBrowser extends React.Component {
       confirmDeletionRenderer: this.props.confirmDeletionRenderer,
       confirmMultipleDeletionRenderer: this.props.confirmMultipleDeletionRenderer,
       icons: this.props.icons,
+      locale: this.props.locale,
 
       // browser state
       openFolders: this.state.openFolders,

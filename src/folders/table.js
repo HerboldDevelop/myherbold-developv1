@@ -29,7 +29,7 @@ class RawTableFolder extends BaseFolder {
           "Accept": '*/*',
           'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
         },
-        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en", "de"]})
+        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: [this.props.locale]})
 
       };
   try {
@@ -64,6 +64,7 @@ class RawTableFolder extends BaseFolder {
 
     const icon = browserProps.icons[isOpen ? 'FolderOpen' : 'Folder']
     const inAction = (isDragging || action)
+    const lang = browserProps.locale
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
     let company = this.getCompany()

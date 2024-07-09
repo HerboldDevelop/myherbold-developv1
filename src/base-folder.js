@@ -8,7 +8,7 @@ class BaseFolder extends React.Component {
     name: PropTypes.string,
     fileKey: PropTypes.string,
     company: PropTypes.string,
-
+    locale: PropTypes.string,
     newName: PropTypes.string,
     keyDerived: PropTypes.bool,
     isDraft: PropTypes.bool,
