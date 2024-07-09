@@ -56,6 +56,13 @@ class BaseFolder extends React.Component {
     const folders = this.props.fileKey.split('/')
     return this.props.newName || folders[folders.length - 2]
   }
+
+  getLocale() {
+    if (this.props.locale) {
+      return this.props.locale
+    }
+  }
+
   getCompany() {
     if (this.props.company) {
       return this.props.company

@@ -36,7 +36,7 @@ class RawTableFolder extends BaseFolder {
     await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
         .then(response => response.json())
         .then(response => {
-          const value = [{ text: this.props.locale === 'de' ? response.translations.de.text : response.translations.en.text }] // Simplify array creation
+          const value = [{ text: this.getLocale() === 'de' ? response.translations.de.text : response.translations.en.text }] // Simplify array creation
   
           this.setState({ value }) // Concise update
         })
