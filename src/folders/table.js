@@ -6,8 +6,7 @@ import flow from 'lodash/flow'
 
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
-import { Translate } from 'tacotranslate/react'
-import { T } from '@tolgee/react'
+
 
 class RawTableFolder extends BaseFolder {
 
@@ -28,22 +27,32 @@ class RawTableFolder extends BaseFolder {
         headers: {
           "Content-Type": 'application/json',
           "Accept": '*/*',
-          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+          'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
         },
         body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en", "de"]})
 
       };
-  
-      await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+  try {
+    await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
         .then(response => response.json())
         .then(response => {
-          const value = [{ text: response.translations.en.text }]; // Simplify array creation
+          const value = [{ text: response.translations.en.text }] // Simplify array creation
   
-          this.setState({ value, loading: false }); // Concise update
+          this.setState({ value }) // Concise update
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error(err))
+        .finally(() => {
+          this.setState({ loading: false }) 
+
+        });
+
+  } catch (e) {
+    console.log(e)
+
+  }
+      
     };
-    getDeepl(); 
+    getDeepl()
   }
      
 
@@ -100,10 +109,11 @@ class RawTableFolder extends BaseFolder {
     }
       name = (
         <div>
-          <a onClick={this.toggleFolder}>
+          {this.state.loading ? null : <a onClick={this.toggleFolder}>
             {icon}
-            {<T keyName={this.getName()} language='en' key={this.getName()} />}
-            </a>
+            {this.state?.value[0]?.text.toUpperCase()}
+            </a>}
+          
         </div>
       )
     }
