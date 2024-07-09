@@ -20,10 +20,7 @@ import { sortByName } from './sorters'
 
 import { isFolder } from './utils'
 import { DefaultAction } from './actions'
-import createTacoTranslateClient from 'tacotranslate'
-import { TacoTranslate } from 'tacotranslate/react'
 
-const tacoTranslateClient = createTacoTranslateClient({ apiKey: 'h85XDZfaYi8IyfJd4uRkkV9Qbedj' })
 
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm

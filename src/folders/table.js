@@ -7,53 +7,54 @@ import flow from 'lodash/flow'
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
 
+const data = [];
 
 class RawTableFolder extends BaseFolder {
 
   constructor(props) {
     super(props); // Call the super constructor first
+     
 
     this.state = {
       // Your initial state
       loading: true,
       value: [],
-      getKey: []
+      getKey: [],
+      val: []
     }
   }
    
-  componentDidMount() {
-    const getDeepl = async () => { // Make it an arrow function
+  async componentDidMount() {
+   // Make it an arrow function
       const options = {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json',
           "Accept": '*/*',
-          'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
+          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
         },
         body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ['en']})
 
       };
-  try {
-    await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
-        .then(response => response.json())
+   const val = await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+        .then(response => {
+          if (response.ok) {
+            return response.json()
+          }
+        })
         .then(response => {
           const value = [{ text: response.translations.en.text }] // Simplify array creation
-  
-          this.setState({ value }) // Concise update
+          if (value.length) {
+           return value
+             // Concise update
+
+          }
         })
-        .catch(err => console.error(err))
-        .finally(() => {
-          this.setState({ loading: false }) 
-
-        });
-
-  } catch (e) {
-    console.log(e)
-
-  }
-      
-    };
-    getDeepl()
+          this.setState({ val }, () => {
+            console.log(this.state.val)
+          })
+           this.setState({ loading: false }) 
+           this.setState({ key: Math.random() });
 
   //   const getTrans = async () => { // Make it an arrow function
   //     const options = {
@@ -87,7 +88,16 @@ class RawTableFolder extends BaseFolder {
   //   getTrans()
   }
      
-
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // Perform a shallow comparison of props and state
+  //   if (
+  //     nextState.val[0] !== this.state.val[0]
+  //   ) {
+  //     console.log(nextState)
+  //     return true; // Re-render if props or state have changed
+  //   }
+  //   return false; // Don't re-render if nothing has changed
+  // }
   render() {
     const {
       isOpen, isDragging, isDeleting, isRenaming, isDraft, isOver, isSelected,
@@ -99,7 +109,7 @@ class RawTableFolder extends BaseFolder {
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
     let company = this.getCompany()
-
+    const {value, loading, val, key} = this.state;
     let name
     if (!inAction && isDeleting && browserProps.selection.length === 1) {
       name = (
@@ -139,15 +149,31 @@ class RawTableFolder extends BaseFolder {
         value = value.replace(/Ü/g, '&Uuml;');
         return value;
     }
+    if (this.getLocale() === undefined) {
       name = (
         <div>
-          {this.state.loading ? null : <a onClick={this.toggleFolder}>
+          {this.state.loading === true ? null : <a onClick={this.toggleFolder}>
             {icon}
-            {this.getLocale() === 'de' ?  this.getName() : this.state?.value[0]?.text.toUpperCase()}
+            {this.getName()}
             </a>}
           
         </div>
       )
+    } else {
+
+        name = (
+          <div>
+            <a key={this.state.key} onClick={this.toggleFolder}>
+              {icon}
+              {this.getLocale()}
+              </a>
+            
+          </div>
+        )
+      
+    
+    }
+   
     }
 
     let draggable = (

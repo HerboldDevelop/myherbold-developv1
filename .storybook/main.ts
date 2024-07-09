@@ -1,9 +1,23 @@
+import type { StorybookConfig } from "@storybook/react-webpack5";
+
+
 const path = require("path")
 
 module.exports = {
 
-  stories: ['../stories/index.js'],
-
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [
+    "@storybook/addon-webpack5-compiler-swc",
+    "@storybook/addon-onboarding",
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@chromatic-com/storybook",
+    "@storybook/addon-interactions",
+  ],
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
+  },
   typescript: {
     check: false,
     checkOptions: {},
@@ -28,3 +42,8 @@ module.exports = {
 
   docs: {}
 }
+
+// const config: StorybookConfig = {
+  
+// };
+// export default config;

@@ -27,7 +27,7 @@ class RawTableFile extends BaseFile {
         headers: {
           "Content-Type": 'application/json',
           "Accept": '*/*',
-          'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
+          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
         },
         body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en"]})
 
