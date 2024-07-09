@@ -64,7 +64,6 @@ class RawTableFolder extends BaseFolder {
 
     const icon = browserProps.icons[isOpen ? 'FolderOpen' : 'Folder']
     const inAction = (isDragging || action)
-    const lang = browserProps.locale
 
     const ConfirmDeletionRenderer = browserProps.confirmDeletionRenderer
     let company = this.getCompany()

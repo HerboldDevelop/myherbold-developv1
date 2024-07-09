@@ -522,7 +522,6 @@ class RawFileBrowser extends React.Component {
       confirmDeletionRenderer: this.props.confirmDeletionRenderer,
       confirmMultipleDeletionRenderer: this.props.confirmMultipleDeletionRenderer,
       icons: this.props.icons,
-      locale: this.props.locale,
 
       // browser state
       openFolders: this.state.openFolders,
@@ -884,9 +883,7 @@ class FileBrowser extends Component {
     
     return (
       <DndProvider backend={HTML5Backend}>
-    <TacoTranslate client={tacoTranslateClient} locale="en">
         <RawFileBrowser {...this.props} />
-        </TacoTranslate>
        </DndProvider>
     )
   }
