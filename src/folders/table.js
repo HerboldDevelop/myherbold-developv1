@@ -16,7 +16,8 @@ class RawTableFolder extends BaseFolder {
     this.state = {
       // Your initial state
       loading: true,
-      value: []
+      value: [],
+      getKey: []
     }
   }
    
@@ -53,6 +54,37 @@ class RawTableFolder extends BaseFolder {
       
     };
     getDeepl()
+
+    const getTrans = async () => { // Make it an arrow function
+      const options = {
+        method: 'GET',
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": '*/*',
+          'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
+        }
+      };
+  try {
+    await fetch(`https://tolgee.myherbold.com/v2/projects/1/translations?filterKeyName=${this.getName()}&languages=${this.getLocale()}`, options)
+        .then(response => response.json())
+        .then(response => {
+          const getKey = [{ translation: response._embedded[0].keys[0].translations }] // Simplify array creation
+  
+          this.setState({ getKey }) // Concise update
+        })
+        .catch(err => console.error(err))
+        .finally(() => {
+          // this.setState({ loading: false }) 
+
+        });
+
+  } catch (e) {
+    console.log(e)
+
+  }
+      
+    };
+    getTrans()
   }
      
 
@@ -111,7 +143,7 @@ class RawTableFolder extends BaseFolder {
         <div>
           {this.state.loading ? null : <a onClick={this.toggleFolder}>
             {icon}
-            {this.state?.value[0]?.text.toUpperCase()}
+            {this.state?.getKey[0][0]?.text.toUpperCase()}
             </a>}
           
         </div>
