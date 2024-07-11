@@ -20,30 +20,30 @@ class RawTableFile extends BaseFile {
     }
   }
    
-  componentDidMount() {
-    const getDeepl = async () => { // Make it an arrow function
-      const options = {
-        method: 'POST',
-        headers: {
-          "Content-Type": 'application/json',
-          "Accept": '*/*',
-          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
-        },
-        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en"]})
+  // componentDidMount() {
+  //   const getDeepl = async () => { // Make it an arrow function
+  //     const options = {
+  //       method: 'POST',
+  //       headers: {
+  //         "Content-Type": 'application/json',
+  //         "Accept": '*/*',
+  //         'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+  //       },
+  //       body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ["en"]})
 
-      };
+  //     };
   
-      await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
-        .then(response => response.json())
-        .then(response => {
-          const value = [{ text: response.translations.en.text }]; // Simplify array creation
+  //     await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
+  //       .then(response => response.json())
+  //       .then(response => {
+  //         const value = [{ text: response.translations.en.text }]; // Simplify array creation
   
-          this.setState({ value, loading: false }); // Concise update
-        })
-        .catch(err => console.error(err));
-    };
-    getDeepl(); 
-  }
+  //         this.setState({ value, loading: false }); // Concise update
+  //       })
+  //       .catch(err => console.error(err));
+  //   };
+  //   getDeepl(); 
+  // }
      
   
   render() {
@@ -109,7 +109,7 @@ class RawTableFile extends BaseFile {
           onClick={this.handleFileClick}
         >
           {icon}
-          {this.state?.value[0]?.text.toUpperCase()}
+          {this.getName()}
         </a> : <a
           href={url || '#'}
           download="download"

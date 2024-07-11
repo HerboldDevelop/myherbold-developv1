@@ -39,7 +39,7 @@ class BaseFolder extends React.Component {
   state = {
     newName: this.props.isDraft ? 'New folder' : this.getName(),
     company: this.getCompany(),
-    locale: this.props.isDraft ? 'New folder' : this.getLocale()
+    // locale: this.props.isDraft ? 'New folder' : this.getLocale()
   }
 
   selectFolderNameFromRef(element) {
@@ -62,9 +62,9 @@ class BaseFolder extends React.Component {
     if (this.props.locale) {
       return this.props.locale
     }
-    const localeval = this.props.locale?.split('/')
+    const folders = this.props.fileKey.split('/')
 
-    return this.props.locale || localeval[localeval?.length - 2]
+    return this.props.locale || folders[folders.length - 2]
   }
 
   getCompany() {

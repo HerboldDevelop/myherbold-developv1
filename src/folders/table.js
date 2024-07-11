@@ -7,6 +7,8 @@ import flow from 'lodash/flow'
 import BaseFolder, { BaseFolderConnectors } from './../base-folder.js'
 import { BaseFileConnectors } from './../base-file.js'
 
+import { GetTranslation } from 'myherbold-tolgee'
+
 const data = [];
 
 class RawTableFolder extends BaseFolder {
@@ -24,69 +26,69 @@ class RawTableFolder extends BaseFolder {
     }
   }
    
-  async componentDidMount() {
-   // Make it an arrow function
-      const options = {
-        method: 'POST',
-        headers: {
-          "Content-Type": 'application/json',
-          "Accept": '*/*',
-          'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
-        },
-        body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ['en']})
-
-      };
-   const val = await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
-        .then(response => {
-          if (response.ok) {
-            return response.json()
-          }
-        })
-        .then(response => {
-          const value = [{ text: response.translations.en.text }] // Simplify array creation
-          if (value.length) {
-           return value
-             // Concise update
-
-          }
-        })
-          this.setState({ val }, () => {
-            console.log(this.state.val)
-          })
-           this.setState({ loading: false }) 
-           this.setState({ key: Math.random() });
-
-  //   const getTrans = async () => { // Make it an arrow function
+  // async componentDidMount() {
+  //  // Make it an arrow function
   //     const options = {
-  //       method: 'GET',
+  //       method: 'POST',
   //       headers: {
   //         "Content-Type": 'application/json',
   //         "Accept": '*/*',
-  //         'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
-  //       }
+  //         'x-api-key': 'tgpak_gfpwczdcgjrdomtqgzyxk3zqnazti23egbvxm3zzozswy'
+  //       },
+  //       body: JSON.stringify({key: this.getName(),namespace:"dashboard",translations:{de: this.getName().toLowerCase()},auto: true,languagesToReturn: ['en']})
+
   //     };
-  // try {
-  //   await fetch(`https://tolgee.myherbold.com/v2/projects/1/translations?filterKeyName=${this.getName()}&languages=${this.getLocale()}`, options)
-  //       .then(response => response.json())
+  //  const val = await fetch('https://tolgee.myherbold.com/v2/projects/1/translations', options)
   //       .then(response => {
-  //         const getKey = [{ translation: response._embedded[0].keys[0].translations }] // Simplify array creation
-  
-  //         this.setState({ getKey }) // Concise update
+  //         if (response.ok) {
+  //           return response.json()
+  //         }
   //       })
-  //       .catch(err => console.error(err))
-  //       .finally(() => {
-  //         // this.setState({ loading: false }) 
+  //       .then(response => {
+  //         const value = [{ text: response.translations.en.text }] // Simplify array creation
+  //         if (value.length) {
+  //          return value
+  //            // Concise update
 
-  //       });
+  //         }
+  //       })
+  //         this.setState({ val }, () => {
+  //           console.log(this.state.val)
+  //         })
+  //          this.setState({ loading: false }) 
+  //          this.setState({ key: Math.random() });
 
-  // } catch (e) {
-  //   console.log(e)
+  // //   const getTrans = async () => { // Make it an arrow function
+  // //     const options = {
+  // //       method: 'GET',
+  // //       headers: {
+  // //         "Content-Type": 'application/json',
+  // //         "Accept": '*/*',
+  // //         'x-api-key': process.env.NEXT_PUBLIC_TOLGEE_API_KEY
+  // //       }
+  // //     };
+  // // try {
+  // //   await fetch(`https://tolgee.myherbold.com/v2/projects/1/translations?filterKeyName=${this.getName()}&languages=${this.getLocale()}`, options)
+  // //       .then(response => response.json())
+  // //       .then(response => {
+  // //         const getKey = [{ translation: response._embedded[0].keys[0].translations }] // Simplify array creation
+  
+  // //         this.setState({ getKey }) // Concise update
+  // //       })
+  // //       .catch(err => console.error(err))
+  // //       .finally(() => {
+  // //         // this.setState({ loading: false }) 
 
-  // }
+  // //       });
+
+  // // } catch (e) {
+  // //   console.log(e)
+
+  // // }
       
-  //   };
-  //   getTrans()
-  }
+  // //   };
+  // //   getTrans()
+  // }
      
   // shouldComponentUpdate(nextProps, nextState) {
   //   // Perform a shallow comparison of props and state
@@ -149,32 +151,18 @@ class RawTableFolder extends BaseFolder {
         value = value.replace(/Ü/g, '&Uuml;');
         return value;
     }
-    if (this.getLocale() === undefined) {
       name = (
         <div>
-          {this.state.loading === true ? null : <a onClick={this.toggleFolder}>
+          <a onClick={this.toggleFolder}>
             {icon}
-            {this.getName()}
-            </a>}
-          
+            {<GetTranslation keyname={this.getName()} stringtotranslate={this.getName()} locale='en'  />}
+            </a>
+
         </div>
       )
-    } else {
-
-        name = (
-          <div>
-            <a key={this.state.key} onClick={this.toggleFolder}>
-              {icon}
-              {this.getLocale()}
-              </a>
-            
-          </div>
-        )
-      
-    
-    }
+    } 
    
-    }
+    
 
     let draggable = (
       <div>

@@ -21,7 +21,6 @@ import { sortByName } from './sorters'
 import { isFolder } from './utils'
 import { DefaultAction } from './actions'
 
-
 const SEARCH_RESULTS_PER_PAGE = 20
 const regexForNewFolderOrFileSelection = /.*\/__new__[/]?$/gm
 
@@ -880,6 +879,7 @@ class FileBrowser extends Component {
     
     return (
       <DndProvider backend={HTML5Backend}>
+       
         <RawFileBrowser {...this.props} />
        </DndProvider>
     )
